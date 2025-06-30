@@ -1,0 +1,8 @@
+#ignore data folder
+data/
+#ignore logs folder
+logs/
+#ignore venv folder
+venv/
+#ignore .env file
+.env

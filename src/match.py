@@ -13,7 +13,7 @@ from shortlist import shortlist
 from scorer    import score, PRICES       # PRICES already loaded inside scorer.py
 
 # ---------- parameters ----------
-TOP_K = 5                      # how many candidates to keep
+TOP_K = 10                      # how many candidates to keep
 
 # ---------- load universes ----------
 target_csv      = "data/targets_354.csv"
@@ -52,6 +52,6 @@ for tk in targets:
     rows.append(row)
 
 # ---------- save ----------
-out_path = Path("data/match_top5.csv")
+out_path = Path("data/match_top10.csv")
 pd.DataFrame(rows).to_csv(out_path, index=False)
 print(f"✅  wrote results → {out_path}  (rows = {len(rows)})")

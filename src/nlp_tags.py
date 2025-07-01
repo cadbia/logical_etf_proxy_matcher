@@ -38,7 +38,12 @@ def build_profiles(ticker_list) -> dict:
         info  = sec.info or {}
         name  = info.get("longName") or info.get("shortName") or tk
         descr = info.get("longBusinessSummary", "")
-        metas[tk] = {"name": name, **_tag_text(name + " " + descr)}
+        assets = info.get("totalAssets", 0) or 0          # may be None
+        metas[tk] = {
+            "name": name,
+            "aum" : assets,           # <--- NEW  (raw dollars, can be 0)
+            **_tag_text(name + " " + descr)
+        }
     return metas
 
 # ---------- cache helpers ----------
